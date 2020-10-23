@@ -4,10 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "tbl_Categories")
+@Entity
+@Table(name = "tbl_categories")
 public class Categories extends BaseEntity{
-	/*
+
 	@Column(name ="name_categories")
 	private String name;
 	
@@ -29,6 +29,6 @@ public class Categories extends BaseEntity{
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-	*/
+
 	
 }

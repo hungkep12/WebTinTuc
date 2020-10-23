@@ -4,20 +4,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "tbl_user")
+@Entity
+@Table(name = "tbl_user")
 public class User extends BaseEntity{
-/*
-	@Column(name = "username")
+	
+	@Column(name = "username", nullable = false)
 	private String userName;
 	
-	@Column(name = "password")
+	@Column(name = "password", nullable = false)
 	private String passWord;
 	
-	@Column(name = "fullname")
+	@Column(name = "fullname",nullable = false)
 	private String fullName;
 	
-	@Column(name= "email")
+	@Column(name ="status",nullable = false)
+	private Boolean status;
+	
+	@Column(name= "email",nullable = false)
 	private String email;
 
 	public String getUserName() {
@@ -44,6 +47,14 @@ public class User extends BaseEntity{
 		this.fullName = fullName;
 	}
 
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -51,6 +62,6 @@ public class User extends BaseEntity{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	*/
+
 	
 }
