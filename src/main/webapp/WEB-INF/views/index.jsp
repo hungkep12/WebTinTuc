@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<!-- Tich hop jstl vao jsp -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -33,33 +38,23 @@
 				<!-- row -->
 				<div class="row">	
 					<!-- post -->
+					<c:forEach var="post" items="${post}" begin="0" end="1">
 					<div class="col-md-6">
 						<div class="post post-thumb">
-							<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-1.jpg" alt=""></a>
+							<a class="post-img" href="${post.id}"><img src="${post.image}" alt=""></a>
 							<div class="post-body">
 								<div class="post-meta">
-									<a class="post-category cat-2" href="/category">JavaScript</a>
-									<span class="post-date">March 27, 2018</span>
+								<c:forEach var="category" items="${category}">
+									<a class="post-category cat-${category.id}" href="/category/${category.name}"><c:out value="${category.name}"/> </a>
+									</c:forEach>
+									<span class="post-date">${post.createdDate}</span>
 								</div>
-								<h3 class="post-title"><a href="/blog-post">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
+								<h3 class="post-title"><a href="/blog-post">${post.title}</a></h3>
 							</div>
 						</div>
 					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="col-md-6">
-						<div class="post post-thumb">
-							<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-2.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-meta">
-									<a class="post-category cat-3" href="/category">Jquery</a>
-									<span class="post-date">March 27, 2018</span>
-								</div>
-								<h3 class="post-title"><a href="/blog-post">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
+					
 					<!-- /post -->
 				</div>
 				<!-- /row -->
@@ -68,300 +63,29 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h2>Recent Posts</h2>
+							<h2>BÀI ĐĂNG GẦN ĐÂY</h2>
 						</div>
 					</div>
 
 					<!-- post -->
+					<c:forEach var="post" items="${post}" begin="0" end="5">
 					<div class="col-md-4">
 						<div class="post">
-							<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-3.jpg" alt=""></a>
+							<a class="post-img" href="/blog-post"><img src="${post.image}" alt=""></a>
 							<div class="post-body">
 								<div class="post-meta">
 									<a class="post-category cat-1" href="/category">Web Design</a>
-									<span class="post-date">March 27, 2018</span>
+									<span class="post-date">${post.createdDate}</span>
 								</div>
-								<h3 class="post-title"><a href="/blog-post">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a></h3>
+								<h3 class="post-title"><a href="/blog-post">${post.title}</a></h3>
 							</div>
 						</div>
 					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="col-md-4">
-						<div class="post">
-							<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-4.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-meta">
-									<a class="post-category cat-2" href="/category">JavaScript</a>
-									<span class="post-date">March 27, 2018</span>
-								</div>
-								<h3 class="post-title"><a href="/blog-post">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
-							</div>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="col-md-4">
-						<div class="post">
-							<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-5.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-meta">
-									<a class="post-category cat-3" href="/category">Jquery</a>
-									<span class="post-date">March 27, 2018</span>
-								</div>
-								<h3 class="post-title"><a href="/blog-post">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-							</div>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<div class="clearfix visible-md visible-lg"></div>
-
-					<!-- post -->
-					<div class="col-md-4">
-						<div class="post">
-							<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-6.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-meta">
-									<a class="post-category cat-2" href="/category">JavaScript</a>
-									<span class="post-date">March 27, 2018</span>
-								</div>
-								<h3 class="post-title"><a href="/blog-post">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
-							</div>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="col-md-4">
-						<div class="post">
-							<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-1.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-meta">
-									<a class="post-category cat-4" href="/category">Css</a>
-									<span class="post-date">March 27, 2018</span>
-								</div>
-								<h3 class="post-title"><a href="/blog-post">CSS Float: A Tutorial</a></h3>
-							</div>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="col-md-4">
-						<div class="post">
-							<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-2.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-meta">
-									<a class="post-category cat-1" href="/category">Web Design</a>
-									<span class="post-date">March 27, 2018</span>
-								</div>
-								<h3 class="post-title"><a href="/blog-post">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 					<!-- /post -->
 				</div>
 				<!-- /row -->
 
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-8">
-						<div class="row">
-							<!-- post -->
-							<div class="col-md-12">
-								<div class="post post-thumb">
-									<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-2.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-3" href="/category">Jquery</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="/blog-post">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-									</div>
-								</div>
-							</div>
-							<!-- /post -->
-
-							<!-- post -->
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-1.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-4" href="/category">Css</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="/blog-post">CSS Float: A Tutorial</a></h3>
-									</div>
-								</div>
-							</div>
-							<!-- /post -->
-
-							<!-- post -->
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-2.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-1" href="/category">Web Design</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="/blog-post">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
-									</div>
-								</div>
-							</div>
-							<!-- /post -->
-
-							<div class="clearfix visible-md visible-lg"></div>
-
-							<!-- post -->
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-4.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-2" href="/category">JavaScript</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="/blog-post">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
-									</div>
-								</div>
-							</div>
-							<!-- /post -->
-
-							<!-- post -->
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-5.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-3" href="/category">Jquery</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="/blog-post">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-									</div>
-								</div>
-							</div>
-							<!-- /post -->
-
-							<div class="clearfix visible-md visible-lg"></div>
-
-							<!-- post -->
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-3.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-1" href="/category">Web Design</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="/blog-post">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a></h3>
-									</div>
-								</div>
-							</div>
-							<!-- /post -->
-
-							<!-- post -->
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-4.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-2" href="/category">JavaScript</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="/blog-post">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
-									</div>
-								</div>
-							</div>
-							<!-- /post -->
-						</div>
-					</div>
-
-					<div class="col-md-4">
-						<!-- post widget -->
-						<div class="aside-widget">
-							<div class="section-title">
-								<h2>Most Read</h2>
-							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/widget-1.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="/blog-post">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
-								</div>
-							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/widget-2.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="/blog-post">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a></h3>
-								</div>
-							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/widget-3.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="/blog-post">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
-								</div>
-							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/widget-4.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="/blog-post">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
-								</div>
-							</div>
-						</div>
-						<!-- /post widget -->
-
-						<!-- post widget -->
-						<div class="aside-widget">
-							<div class="section-title">
-								<h2>Featured Posts</h2>
-							</div>
-							<div class="post post-thumb">
-								<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-2.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-meta">
-										<a class="post-category cat-3" href="/category">Jquery</a>
-										<span class="post-date">March 27, 2018</span>
-									</div>
-									<h3 class="post-title"><a href="/blog-post">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-								</div>
-							</div>
-
-							<div class="post post-thumb">
-								<a class="post-img" href="/blog-post"><img src="${pageContext.request.contextPath}/img/post-1.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-meta">
-										<a class="post-category cat-2" href="/category">JavaScript</a>
-										<span class="post-date">March 27, 2018</span>
-									</div>
-									<h3 class="post-title"><a href="/blog-post">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
-								</div>
-							</div>
-						</div>
-						<!-- /post widget -->
-						
-						<!-- ad -->
-						<div class="aside-widget text-center">
-							<a href="#" style="display: inline-block;margin: auto;">
-								<img class="img-responsive" src="${pageContext.request.contextPath}/img/ad-1.jpg" alt="">
-							</a>
-						</div>
-						<!-- /ad -->
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /section -->
-		
 		<!-- section -->
 		<div class="section section-grey">
 			<!-- container -->
@@ -370,7 +94,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title text-center">
-							<h2>Featured Posts</h2>
+							<h2>CÁC BÀI ĐĂNG</h2>
 						</div>
 					</div>
 
@@ -435,7 +159,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="section-title">
-									<h2>Most Read</h2>
+									<h2>TIN TỨC XEM NHIỀU NHẤT</h2>
 								</div>
 							</div>
 							<!-- post -->
@@ -520,38 +244,9 @@
 						<!-- /ad -->
 						
 						<!-- catagories -->
-						<div class="aside-widget">
-							<div class="section-title">
-								<h2>Catagories</h2>
-							</div>
-							<div class="category-widget">
-								<ul>
-									<li><a href="#" class="cat-1">Web Design<span>340</span></a></li>
-									<li><a href="#" class="cat-2">JavaScript<span>74</span></a></li>
-									<li><a href="#" class="cat-4">JQuery<span>41</span></a></li>
-									<li><a href="#" class="cat-3">CSS<span>35</span></a></li>
-								</ul>
-							</div>
-						</div>
+						<%@ include file="/WEB-INF/views/layout/categories.jsp" %>
 						<!-- /catagories -->
 						
-						<!-- tags -->
-						<div class="aside-widget">
-							<div class="tags-widget">
-								<ul>
-									<li><a href="#">Chrome</a></li>
-									<li><a href="#">CSS</a></li>
-									<li><a href="#">Tutorial</a></li>
-									<li><a href="#">Backend</a></li>
-									<li><a href="#">JQuery</a></li>
-									<li><a href="#">Design</a></li>
-									<li><a href="#">Development</a></li>
-									<li><a href="#">JavaScript</a></li>
-									<li><a href="#">Website</a></li>
-								</ul>
-							</div>
-						</div>
-						<!-- /tags -->
 					</div>
 				</div>
 				<!-- /row -->

@@ -17,12 +17,11 @@
 
 			<!-- nav -->
 			<ul class="nav-menu nav navbar-nav">
-				<li><a href="/category">News</a></li>
-				<li><a href="/category">Popular</a></li>
-				<li class="cat-1"><a href="/category">Web Design</a></li>
-				<li class="cat-2"><a href="/category">JavaScript</a></li>
-				<li class="cat-3"><a href="/category">Css</a></li>
-				<li class="cat-4"><a href="/category">Jquery</a></li>
+				<li><a href="/category">TIN TỨC</a></li>
+				<li><a href="/category">PHỔ BIẾN</a></li>
+				<c:forEach var="categories" items="${categories}">
+					<li class="cat-${categories.id}"><a href="/category/${categories.name}">${categories.name}</a></li>
+				</c:forEach>
 			</ul>
 			<!-- /nav -->
 
