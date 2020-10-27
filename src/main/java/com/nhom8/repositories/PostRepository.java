@@ -13,4 +13,6 @@ public interface PostRepository extends JpaRepository<Post, Integer>{
 	
 	@Query("SELECT e FROM Post e ORDER BY e.id DESC")
 	List<Post> findAll();
+	
+	List<Post> findByTitleLike(String title);
 }

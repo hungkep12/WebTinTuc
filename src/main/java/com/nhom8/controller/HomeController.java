@@ -33,31 +33,33 @@ public class HomeController {
 	UserRepository userRepository;
 
 	@RequestMapping("/about")
-	public String hello(Model model) {
+	public String hello(Model model, final HttpServletRequest request, final HttpServletResponse response) {
+		model.addAttribute("categories", categoriesRepository.findAll());
 		return "about";
 	}
 
-	@RequestMapping(value = { "/blank" }, method = { RequestMethod.GET })
-	public String blank(Model model, final HttpServletRequest request, final HttpServletResponse response) {
-		return "blank";
-	}
+	@RequestMapping("/blog-post/{title}")
+	public String blog_post(@PathVariable String title, Model model, final HttpServletRequest request,
+			final HttpServletResponse response) {
 
-	@RequestMapping("/blog-post")
-	public String blog_post(Model model) {
+		//tìm kiếm theo title trong tbl_post
+		model.addAttribute("post", postRepository.findByTitleLike(title));
+		model.addAttribute("categories", categoriesRepository.findAll());
+
 		return "blog-post";
 	}
 
 	@RequestMapping("/category/{name_category}")
 	public String category(@PathVariable String name_category, @ModelAttribute("category") Categories categories,
 			final ModelMap model, final HttpServletRequest request, final HttpServletResponse response) {
-
-		// model.addAttribute("category", attributeValue);
+		model.addAttribute("categories", categoriesRepository.findAll());
 
 		return "category";
 	}
 
 	@RequestMapping("/contact")
-	public String contact(Model model) {
+	public String contact(Model model, final HttpServletRequest request, final HttpServletResponse response) {
+		model.addAttribute("categories", categoriesRepository.findAll());
 		return "contact";
 	}
 

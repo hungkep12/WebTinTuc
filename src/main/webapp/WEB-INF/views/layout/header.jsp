@@ -51,18 +51,16 @@
 		<!-- nav -->
 		<div class="section-row">
 			<ul class="nav-aside-menu">
-				<li><a href="/">Home</a></li>
-				<li><a href="/about">About Us</a></li>
-				<li><a href="#">Join Us</a></li>
-				<li><a href="#">Advertisement</a></li>
-				<li><a href="/contact">Contacts</a></li>
+				<li><a href="/">Trang chủ</a></li>
+				<li><a href="/about">Về chúng tôi</a></li>
+				<li><a href="/contact">Liên hệ</a></li>
 			</ul>
 		</div>
 		<!-- /nav -->
 
 		<!-- widget posts -->
 		<div class="section-row">
-			<h3>Recent Posts</h3>
+			<h3>BÀI VIẾT GẦN ĐÂY</h3>
 			<div class="post post-widget">
 				<a class="post-img" href="/blog-post"><img
 					src="./img/widget-2.jpg" alt=""></a>
