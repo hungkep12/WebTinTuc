@@ -34,11 +34,13 @@
 					<i class="fa fa-search"></i>
 				</button>
 				<div class="search-form">
+				<form action="/search" class="search-form">
 					<input class="search-input" type="text" name="search"
 						placeholder="Enter Your Search ...">
 					<button class="search-close">
 						<i class="fa fa-times"></i>
 					</button>
+					</form>
 				</div>
 			</div>
 			<!-- /search & aside toggle -->

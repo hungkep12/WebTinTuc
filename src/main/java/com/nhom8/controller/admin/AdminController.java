@@ -1,4 +1,4 @@
-package com.nhom8.controller;
+package com.nhom8.controller.admin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

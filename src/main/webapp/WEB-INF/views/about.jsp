@@ -108,52 +108,13 @@
 					<!-- post widget -->
 					<div class="aside-widget">
 						<div class="section-title">
-							<h2>XEN NHIỀU NHÁT</h2>
+							<h2>XEM NHIỀU NHẤT</h2>
 						</div>
 
-						<div class="post post-widget">
-							<a class="post-img" href="/blog-post"><img
-								src="${pageContext.request.contextPath}/img/widget-1.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title">
-									<a href="/blog-post">Tell-A-Tool: Guide To Web Design
-										And Development Tools</a>
-								</h3>
-							</div>
-						</div>
-
-						<div class="post post-widget">
-							<a class="post-img" href="/blog-post"><img
-								src="${pageContext.request.contextPath}/img/widget-2.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title">
-									<a href="/blog-post">Pagedraw UI Builder Turns Your
-										Website Design Mockup Into Code Automatically</a>
-								</h3>
-							</div>
-						</div>
-
-						<div class="post post-widget">
-							<a class="post-img" href="/blog-post"><img
-								src="${pageContext.request.contextPath}/img/widget-3.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title">
-									<a href="/blog-post">Why Node.js Is The Coolest Kid On
-										The Backend Development Block!</a>
-								</h3>
-							</div>
-						</div>
-
-						<div class="post post-widget">
-							<a class="post-img" href="/blog-post"><img
-								src="${pageContext.request.contextPath}/img/widget-4.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title">
-									<a href="/blog-post">Tell-A-Tool: Guide To Web Design
-										And Development Tools</a>
-								</h3>
-							</div>
-						</div>
+						<!-- most post -->
+							<%@ include file="/WEB-INF/views/layout/mostPost.jsp" %>
+						<!-- end most post -->
+							
 					</div>
 					<!-- /post widget -->
 				</div>

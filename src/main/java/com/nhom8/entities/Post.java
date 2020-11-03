@@ -1,5 +1,6 @@
 package com.nhom8.entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,15 +37,15 @@ public class Post extends BaseEntity {
 	private Boolean status;
 
 	@Column(name = "create_date")
-	private Date createdDate;
+	private LocalDate createdDate;
+	
+	@Column(name = "view")
+	private int view;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idCategory")
 	private Categories category;
-	/*
-	@Column(name = "idCategory", nullable = false)
-	private Integer idCategory;
-*/
+	
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> Comment = new ArrayList<Comment>();
 
@@ -88,11 +89,11 @@ public class Post extends BaseEntity {
 		this.status = status;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -103,16 +104,7 @@ public class Post extends BaseEntity {
 	public void setCategory(Categories category) {
 		this.category = category;
 	}
-/*
 
-	public Integer getIdCategory() {
-		return idCategory;
-	}
-
-	public void setIdCategory(Integer idCategory) {
-		this.idCategory = idCategory;
-	}
-	*/
 	public List<Comment> getComment() {
 		return Comment;
 	}
@@ -120,6 +112,14 @@ public class Post extends BaseEntity {
 
 	public void setComment(List<Comment> comment) {
 		Comment = comment;
+	}
+
+	public int getView() {
+		return view;
+	}
+
+	public void setView(int view) {
+		this.view = view;
 	}
 
 }

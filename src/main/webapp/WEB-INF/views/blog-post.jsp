@@ -37,7 +37,7 @@
 				<div class="row">
 					<div class="col-md-10">
 						<div class="post-meta">
-							<a class="post-category cat-2" href="/category">${post.category}</a> <span
+							<a class="post-category cat-${post.category.id}" href="/category/${post.category.name}">${post.category.name}</a> <span
 								class="post-date">${post.createdDate}</span>
 						</div>
 						<h1>${post.title}</h1>
@@ -241,6 +241,18 @@
 						</a>
 					</div>
 					<!-- /ad -->
+					<!-- post widget -->
+						<div class="aside-widget">
+							<div class="section-title">
+								<h2>XEM NHIỀU NHẤT</h2>
+							</div>
+
+							<!-- most post -->
+							<%@ include file="/WEB-INF/views/layout/mostPost.jsp" %>
+							<!-- end most post -->
+							
+						<!-- /post widget -->
+					</div>
 					<!-- catagories -->
 					<%@ include file="/WEB-INF/views/layout/categories.jsp"%>
 					<!-- /catagories -->

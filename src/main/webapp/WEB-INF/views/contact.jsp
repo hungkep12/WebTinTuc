@@ -45,7 +45,21 @@
 		<!-- /Page Header -->
 	</header>
 	<!-- /Header -->
-
+	<!-- Thông báo tới người dùng -->
+	<c:choose>
+		<c:when test="${status == 'success' }">
+			<div class="alert alert-success">
+			<script LANGUAGE='JavaScript'>alert('Thành Công! Cảm ơn bạn đã góp ý.')</script>
+				
+			</div>
+		</c:when>
+		<c:when test="${status == 'faile' }">
+			<div class="alert alert-danger">
+			<script LANGUAGE='JavaScript'>alert('Thất Bại! Có một số lỗi xảy ra.')</script>
+				
+			</div>
+		</c:when>
+	</c:choose>
 	<!-- section -->
 	<div class="section">
 		<!-- container -->
@@ -75,7 +89,7 @@
 				<div class="col-md-5 col-md-offset-1">
 					<div class="section-row">
 						<h3>Send A Message</h3>
-						<form>
+						<form method="post" action="/contact-bind-data" modelAttribute="contact2">
 							<div class="row">
 								<div class="col-md-7">
 									<div class="form-group">
@@ -85,13 +99,13 @@
 								</div>
 								<div class="col-md-7">
 									<div class="form-group">
-										<span>Subject</span> <input class="input" type="text"
-											name="subject">
+										<span>fullName</span> <input class="input" type="text"
+											name="fullName">
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<textarea class="input" name="message" placeholder="Message"></textarea>
+										<textarea class="input" name="content" placeholder="Message"></textarea>
 									</div>
 									<button class="primary-button">Submit</button>
 								</div>
@@ -107,7 +121,7 @@
 	<!-- /section -->
 
 	<!-- Footer -->
-	<%@ include file="/WEB-INF/views/layout/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
 	<!-- /Footer -->
 
 	<!-- jQuery Plugins -->

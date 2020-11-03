@@ -35,22 +35,20 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="footer-widget">
-							<h3 class="footer-title">About Us</h3>
+							<h3 class="footer-title">Về chúng tôi</h3>
 							<ul class="footer-links">
-								<li><a href="/about">About Us</a></li>
-								<li><a href="#">Join Us</a></li>
-								<li><a href="/contact">Contacts</a></li>
+								<li><a href="/about">Về chúng tôi</a></li>
+								<li><a href="/contact">Liên hệ</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="footer-widget">
-							<h3 class="footer-title">Catagories</h3>
+							<h3 class="footer-title">Thể loại</h3>
 							<ul class="footer-links">
-								<li><a href="/category">Web Design</a></li>
-								<li><a href="/category">JavaScript</a></li>
-								<li><a href="/category">Css</a></li>
-								<li><a href="/category">Jquery</a></li>
+							<c:forEach var="categories" items="${categories}">
+								<li><a href="/category/${categories.name}">${categories.name}</a></li>
+							</c:forEach>
 							</ul>
 						</div>
 					</div>
