@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nhom8.entities.Categories;
+import com.nhom8.entities.Post;
 import com.nhom8.repositories.CategoriesRepository;
 import com.nhom8.repositories.CommentRepository;
 import com.nhom8.repositories.ContactRepository;
@@ -66,4 +67,5 @@ public class HomeController {
 		return "index";
 	}
 
+	
 }

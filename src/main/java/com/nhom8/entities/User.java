@@ -1,7 +1,13 @@
 package com.nhom8.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +28,9 @@ public class User extends BaseEntity{
 	
 	@Column(name= "email",nullable = false)
 	private String email;
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Comment> Comment = new ArrayList<Comment>();
 
 	public String getUserName() {
 		return userName;
@@ -61,6 +70,14 @@ public class User extends BaseEntity{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Comment> getComment() {
+		return Comment;
+	}
+
+	public void setComment(List<Comment> comment) {
+		Comment = comment;
 	}
 
 	

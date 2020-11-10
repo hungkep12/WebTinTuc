@@ -1,5 +1,6 @@
 package com.nhom8.entities;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import javax.persistence.Column;
@@ -16,21 +17,33 @@ import com.nhom8.entities.Post;
 public class Comment extends BaseEntity{
 
 	@Column(name="content")
-	private String name;
+	private String content;
 	
 	@Column(name ="create_date")
-	private Date dateTime;
+	private LocalDate dateTime;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPost")
 	private Post post;
 
-	public String getName() {
-		return name;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idUser")
+	private User user;	
+
+	public String getContent() {
+		return content;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public LocalDate getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(LocalDate dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public Post getPost() {
@@ -41,12 +54,14 @@ public class Comment extends BaseEntity{
 		this.post = post;
 	}
 
-	public Date getDateTime() {
-		return dateTime;
+
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

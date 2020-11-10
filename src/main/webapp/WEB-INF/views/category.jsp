@@ -57,42 +57,10 @@
 				<div class="col-md-8">
 					<div class="row">
 						<!-- post -->
+						<c:forEach var="post" items="${post}" begin="0" end="0">
 						<div class="col-md-12">
 							<div class="post post-thumb">
-								<a class="post-img" href="blog-post.html"><img
-									src="${pageContext.request.contextPath}/img/post-1.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-meta">
-										<a class="post-category cat-2" href="#">JavaScript</a> <span
-											class="post-date">March 27, 2018</span>
-									</div>
-									<h3 class="post-title">
-										<a href="blog-post.html">Javascript : Prototype vs Class</a>
-									</h3>
-								</div>
-							</div>
-						</div>
-						<!-- /post -->
-
-
-						<div class="clearfix visible-md visible-lg"></div>
-
-						<!-- ad -->
-						<div class="col-md-12">
-							<div class="section-row">
-								<a href="#"> <img class="img-responsive center-block"
-									src="${pageContext.request.contextPath}/img/ad-2.jpg" alt="">
-								</a>
-							</div>
-						</div>
-						<!-- ad -->
-						
-						<c:forEach var="post" items="${post}" begin ="0" end="4">
-						<!-- post -->
-					
-						<div class="col-md-12">
-							<div class="post post-row">
-								<a class="post-img" href="/blog-post/${post.title}"><img
+								<a class="post-img" href="/blog-post/${post.id}-${post.title}"><img
 									src="${post.image}" alt=""></a>
 								<div class="post-body">
 									<div class="post-meta">
@@ -100,7 +68,33 @@
 											class="post-date">${post.createdDate}</span>
 									</div>
 									<h3 class="post-title">
-										<a href="/blog-post/${post.title}">${post.title}</a>
+										<a href="/blog-post/${post.id}-${post.title}">${post.title}</a>
+									</h3>
+								</div>
+							</div>
+						</div>
+						</c:forEach>
+						<!-- /post -->
+						
+
+
+						<div class="clearfix visible-md visible-lg"></div>
+
+												
+						<c:forEach var="post" items="${post}" begin ="1" end="4">
+						<!-- post -->
+					
+						<div class="col-md-12">
+							<div class="post post-row">
+								<a class="post-img" href="/blog-post/${post.id}-${post.title}"><img
+									src="${post.image}" alt=""></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-${post.category.id}" href="#">${post.category.name}</a> <span
+											class="post-date">${post.createdDate}</span>
+									</div>
+									<h3 class="post-title">
+										<a href="/blog-post/${post.id}-${post.title}">${post.title}</a>
 									</h3>
 									<p>${post.details}</p>
 								</div>
@@ -124,17 +118,7 @@
 						<div class="section-title">
 							<h2>XEM NHIỀU NHẤT</h2>
 						</div>
-					<c:forEach var="mostPost" items="${mostPost}" begin ="0" end="3">
-						<div class="post post-widget">
-							<a class="post-img" href="/blog-post/${mostPost.title}"><img
-								src="${mostPost.image}" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title">
-									<a href="/blog-post/${mostPost.title}">${mostPost.title}</a>
-								</h3>
-							</div>
-						</div>
-					</c:forEach>
+						<%@ include file="/WEB-INF/views/layout/mostPost.jsp" %>
 						
 					</div>
 					<!-- /post widget -->

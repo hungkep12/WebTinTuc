@@ -35,9 +35,9 @@
 					<div class="col-md-10">
 						<ul class="page-header-breadcrumb">
 							<li><a href="/index">Home</a></li>
-							<li>Contact</li>
+							<li>Liên hệ</li>
 						</ul>
-						<h1>Contact</h1>
+						<h1>LIÊN HỆ</h1>
 					</div>
 				</div>
 			</div>
@@ -89,7 +89,7 @@
 				<div class="col-md-5 col-md-offset-1">
 					<div class="section-row">
 						<h3>Send A Message</h3>
-						<form method="post" action="/contact-bind-data" modelAttribute="contact2">
+						<form action="/contact-bind-data" modelAttribute="contact">
 							<div class="row">
 								<div class="col-md-7">
 									<div class="form-group">

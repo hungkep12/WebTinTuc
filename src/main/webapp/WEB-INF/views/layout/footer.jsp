@@ -35,9 +35,9 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="footer-widget">
-							<h3 class="footer-title">Về chúng tôi</h3>
+							<h3 class="footer-title">Giới thiệu</h3>
 							<ul class="footer-links">
-								<li><a href="/about">Về chúng tôi</a></li>
+								<li><a href="/about">Giới thiệu</a></li>
 								<li><a href="/contact">Liên hệ</a></li>
 							</ul>
 						</div>

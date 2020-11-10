@@ -18,23 +18,21 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.4.RELEASE</version>
 	</parent>
-
+	
 	<!-- định nghĩa phiên của dependency -->
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<!-- chỉ định phiên bản java cho maven -->
-
+		
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-
+	
 		<commons-math3.version>3.6.1</commons-math3.version>
 	</properties>
 
 	<!-- danh sách các thư viện được dùng trong dự án -->
 	<dependencies>
-
+	
 		<!-- tích hợp spring-mvc vào project -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -52,11 +50,11 @@
 		</dependency>
 		<!-- tự động restart khi thay đổi code -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-
-
+		
+		
 		<!-- spring jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -67,20 +65,20 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-
+				
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-math3</artifactId>
 			<version>${commons-math3.version}</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		
 	</dependencies>
 	
 	<build>

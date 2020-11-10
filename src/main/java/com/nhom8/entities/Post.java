@@ -47,7 +47,7 @@ public class Post extends BaseEntity {
 	private Categories category;
 	
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Comment> Comment = new ArrayList<Comment>();
+	private List<Comment> comment = new ArrayList<Comment>();
 
 	public String getTitle() {
 		return title;
@@ -106,12 +106,11 @@ public class Post extends BaseEntity {
 	}
 
 	public List<Comment> getComment() {
-		return Comment;
+		return comment;
 	}
 
-
 	public void setComment(List<Comment> comment) {
-		Comment = comment;
+		this.comment = comment;
 	}
 
 	public int getView() {

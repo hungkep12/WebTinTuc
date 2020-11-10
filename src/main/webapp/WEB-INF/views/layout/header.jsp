@@ -54,7 +54,7 @@
 		<div class="section-row">
 			<ul class="nav-aside-menu">
 				<li><a href="/">Trang chủ</a></li>
-				<li><a href="/about">Về chúng tôi</a></li>
+				<li><a href="/about">Giới thiệu</a></li>
 				<li><a href="/contact">Liên hệ</a></li>
 			</ul>
 		</div>
