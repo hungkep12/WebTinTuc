@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_post")
 public class Post extends BaseEntity {
 	@Lob
-	@Column(name = "title", length = 100, nullable = false)
+	@Column(name = "title", columnDefinition = "text", nullable = false)
 	private String title;
 
 	@Lob // quy định cụ thể chú thích rằng cơ sở dữ liệu nên lưu trữ các tài sản như đối tượng lớn
@@ -37,7 +37,7 @@ public class Post extends BaseEntity {
 	private Boolean status;
 
 	@Column(name = "create_date")
-	private LocalDate createdDate;
+	private Date createdDate;
 	
 	@Column(name = "view")
 	private int view;
@@ -48,6 +48,10 @@ public class Post extends BaseEntity {
 	
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> comment = new ArrayList<Comment>();
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "author")
+	private Admin admin;
 
 	public String getTitle() {
 		return title;
@@ -89,12 +93,20 @@ public class Post extends BaseEntity {
 		this.status = status;
 	}
 
-	public LocalDate getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(LocalDate createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public int getView() {
+		return view;
+	}
+
+	public void setView(int view) {
+		this.view = view;
 	}
 
 	public Categories getCategory() {
@@ -113,12 +125,12 @@ public class Post extends BaseEntity {
 		this.comment = comment;
 	}
 
-	public int getView() {
-		return view;
+	public Admin getAdmin() {
+		return admin;
 	}
 
-	public void setView(int view) {
-		this.view = view;
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
 	}
 
 }

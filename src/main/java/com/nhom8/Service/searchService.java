@@ -2,6 +2,10 @@ package com.nhom8.Service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,22 +15,15 @@ import com.nhom8.repositories.PostRepository;
 @Service
 public class searchService {
 
+@PersistenceContext protected EntityManager entityManager;
+	
 	@Autowired
 	PostRepository postRepository;
-
-	@Autowired
-
-	public PostRepository getPostRepository() {
-		return postRepository;
-	}
-
-	@Autowired
-
-	public void setPostRepository(PostRepository postRepository) {
-		this.postRepository = postRepository;
-	}
-
-	public List<Post> findByNameContaining(String title) {
-		return postRepository.findByTitleLike("%" + title + "%");
+	
+	@SuppressWarnings("unchecked")
+	public List<Post> findByTitleLike(String title){
+		String sql="SELECT * FROM tbl_post WHERE title like '%"+title+"%'";
+		Query query = entityManager.createNativeQuery(sql, Post.class);
+		return query.getResultList();
 	}
 }

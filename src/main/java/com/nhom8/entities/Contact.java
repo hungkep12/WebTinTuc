@@ -1,5 +1,7 @@
 package com.nhom8.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -15,8 +17,14 @@ public class Contact extends BaseEntity{
 	private String email;
 	
 	@Lob
-	@Column(name ="Content", nullable = false, columnDefinition = "text" )
+	@Column(name ="content", nullable = false, columnDefinition = "text" )
 	private String content;
+	
+	@Column(name ="stt")
+	private Boolean stt;
+	
+	@Column(name = "create_date")
+	private Date createdDate;
 
 	public String getFullName() {
 		return fullName;
@@ -41,6 +49,21 @@ public class Contact extends BaseEntity{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Boolean getStt() {
+		return stt;
+	}
+
+	public void setStt(Boolean stt) {
+		this.stt = stt;
+	}
 	
 }

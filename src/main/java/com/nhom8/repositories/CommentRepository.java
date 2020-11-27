@@ -10,6 +10,4 @@ import com.nhom8.entities.Comment;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Integer>{
-	@Query("SELECT e FROM Comment e WHERE e.post.id =?1")
-	List<Comment> findCommentById(int id);
 }

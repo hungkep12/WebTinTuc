@@ -11,14 +11,6 @@
 	<name>WebTinTuc Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
-	<!-- giống như java class A extends B => B là cha của A -->
-	<!-- project java-web-001 extends spring-boot-starter-parent -->
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.4.RELEASE</version>
-	</parent>
-	
 	<!-- định nghĩa phiên của dependency -->
 	<properties>
 		<java.version>1.8</java.version>
@@ -30,71 +22,90 @@
 		<commons-math3.version>3.6.1</commons-math3.version>
 	</properties>
 
-	<!-- danh sách các thư viện được dùng trong dự án -->
+	<!-- Tich hop SPRING BOOT. De su dung thu vien cua spring boot -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.4.RELEASE</version>
+	</parent>
+
 	<dependencies>
-	
-		<!-- tích hợp spring-mvc vào project -->
+
+		<!-- SPRING MVC -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- SPRING - LOGGING -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
 		<!-- dùng để xử lí các thẻ jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-		<!-- trình thông dịch jsp -->
+		<!-- TOMCAT trình thông dịch jsp -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+
+			<scope>test</scope>
+		</dependency>
+
 		<!-- tự động restart khi thay đổi code -->
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-devtools</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-		
-		
+
+
 		<!-- spring jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!-- mysql JDBC -->
+
+		<!-- mysql driver -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-				
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+
+		<!-- springboot - security 
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-math3</artifactId>
-			<version>${commons-math3.version}</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+		</dependency>-->
+
 	</dependencies>
-	
+
 	<build>
-		
-		<finalName>WebTinTuc</finalName>
-		
 		<plugins>
-		
-			<!-- đóng gói dự án cùng các thư viện ngoài -->
-			<!-- sử dụng lệnh: mvn clean compile assembly:single -->
+			<!-- mvn clean compile assembly:single -->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.nhom8</mainClass>
+							<mainClass>com.nhom8.StartServer</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
@@ -102,8 +113,9 @@
 					</descriptorRefs>
 				</configuration>
 			</plugin>
-			
 		</plugins>
+
+		<finalName>WebTinTuc</finalName>
 	</build>
 
 </project>
