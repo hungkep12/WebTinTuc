@@ -61,8 +61,7 @@
 									<img class="img-responsive"
 										src="${pageContext.request.contextPath}/img/${post.image}"
 										alt="">
-									<figcaption>So Lorem Ipsum is bad (not
-										necessarily)</figcaption>
+									
 								</figure>
 								<p>${post.details}</p>
 							</div>

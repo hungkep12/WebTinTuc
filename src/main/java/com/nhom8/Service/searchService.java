@@ -22,7 +22,7 @@ public class searchService {
 	
 	@SuppressWarnings("unchecked")
 	public List<Post> findByTitleLike(String title){
-		String sql="SELECT * FROM tbl_post WHERE title like '%"+title+"%'";
+		String sql="SELECT * FROM tbl_post WHERE LOWER(title) like '%"+title+"%'";
 		Query query = entityManager.createNativeQuery(sql, Post.class);
 		return query.getResultList();
 	}

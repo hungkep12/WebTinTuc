@@ -25,7 +25,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 	@Query("SELECT e.view FROM Post e WHERE e.id = ?1")
 	int findViewById(int id);
 
-	List<Post> findByTitleLike(String title);
+	List<Post> findByTitleIgnoreCase(String title);
 
 	@Query("SELECT e.category FROM Post e where e.id =?1")
 	Integer findCategoryName(int idPost);

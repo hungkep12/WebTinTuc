@@ -25,7 +25,10 @@ public class Contact extends BaseEntity{
 	
 	@Column(name = "create_date")
 	private Date createdDate;
-
+	
+	@Column(name = "feedback",columnDefinition = "text" )
+	private String feedback;
+	
 	public String getFullName() {
 		return fullName;
 	}
@@ -64,6 +67,14 @@ public class Contact extends BaseEntity{
 
 	public void setStt(Boolean stt) {
 		this.stt = stt;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 	
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -24,8 +25,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.nhom8.Service.AdminService;
 import com.nhom8.entities.Admin;
+import com.nhom8.entities.Contact;
 import com.nhom8.repositories.AdminRepository;
+import com.nhom8.repositories.ContactRepository;
 import com.nhom8.repositories.PostRepository;
 import com.nhom8.repositories.UserRepository;
 
@@ -40,6 +44,11 @@ public class ListAdminController {
 	@Autowired
 	PostRepository postRepository;
 
+	@Autowired
+	AdminService adminService;
+	@Autowired
+	ContactRepository contactRepository;
+	
 	@Value("${file.upload.path}")
 	private String attachmentPath;
 
@@ -62,11 +71,23 @@ public class ListAdminController {
 		if (CheckLogIn.Check(request) == false) {
 			return "redirect:/admin/login";
 		}
+		boolean kiemtra = false;
+		if(!adminService.countContact()) {
+			kiemtra = false;
+		}
+		else {
+			kiemtra = true;
+		}
+		System.out.println("Kiểm tra : " + adminService.countContact());
+		model.addAttribute("kiemtra", kiemtra);
 		List<Admin> admin = adminRepository.findAll();
 		model.addAttribute("admin", adminRepository.findAll());
 		model.addAttribute("countUserAccount", userRepository.CountUserById());
 		model.addAttribute("countAdminAccount", adminRepository.CountAdminById());
 		model.addAttribute("countPost", postRepository.CountPostById());
+		List<Contact> contactFalse = contactRepository.findAll();
+		model.addAttribute("contactFalse",adminService.findAll());
+		
 		return "admin/index";
 	}
 
@@ -135,6 +156,10 @@ public class ListAdminController {
 			postImage.transferTo(new File(attachmentPath + "/" + postImage.getOriginalFilename()));
 		}
 
+		String password = admin.getPass();
+		String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+		admin.setPass(hash);
+		
 		adminRepository.save(admin);
 
 		return "admin/Admin_User/add_admin";

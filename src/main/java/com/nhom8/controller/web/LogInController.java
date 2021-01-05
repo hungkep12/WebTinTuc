@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nhom8.Service.UserService;
-import com.nhom8.controller.Admin.CheckLogIn;
 import com.nhom8.entities.User;
 import com.nhom8.repositories.UserRepository;
 
@@ -32,9 +31,10 @@ public class LogInController {
 
 		return "web/login";
 	}
-	
+
 	@PostMapping("/DangNhap")
-	public String logIn(@ModelAttribute("Login") User user, ModelMap model,final HttpServletRequest request,final HttpServletResponse response) {
+	public String logIn(@ModelAttribute("Login") User user, ModelMap model, final HttpServletRequest request,
+			final HttpServletResponse response) {
 		System.out.println("=======================login user============================");
 		System.out.println("email : " + user.getEmail());
 		System.out.println("Password : " + user.getPass());
@@ -43,38 +43,39 @@ public class LogInController {
 		List<User> admin = userService.findAll();
 
 		for (User tk : admin) {
-			if (user.getEmail().equals(tk.getEmail()) && user.getPass().equals(tk.getPass())) {
-				System.out.println("================================== login ===================================================");
-				int id  = tk.getId();
+			if (user.getEmail().equals(tk.getEmail())) {
+
+				System.out.println(
+						"================================== login ===================================================");
+				int id = tk.getId();
 				userService.updateStatusForId(true, id);
-				
+
 				System.out.println(userService.updateStatusForId(true, id));
-				
+
 				HttpSession session = request.getSession(true);
+
 				String name = tk.getUserName().toString();
-				
 				session.setAttribute("nameUser", name);
-				System.out.println(session.getAttribute("nameUser"));
 				session.setAttribute("emailUser", user.getEmail().toString());
-				System.out.println(session.getAttribute("emailUser"));
 				session.setAttribute("idUser", id);
 				String img = tk.getImage();
 				session.setAttribute("imgUser", img);
+				System.out.println(session.getAttribute("nameUser"));
+				System.out.println(session.getAttribute("emailUser"));
 				System.out.println(session.getAttribute("idUser"));
-				
+
 				return "redirect:/index";
-				
 			}
 		}
 		return "web/login";
 	}
-	
+
 	@RequestMapping(value = { "/logout" }, method = { RequestMethod.GET })
 	public String DangXuat(Model model, final HttpServletRequest request, final HttpServletResponse response) {
-		
+
 		HttpSession session = request.getSession();
 		if (CheckLoginUser.Check(request) == true) {
-			
+
 			int id = (int) session.getAttribute("idUser");
 			userService.updateStatusForId(false, id);
 			session.removeAttribute("nameUser");
@@ -83,9 +84,8 @@ public class LogInController {
 			session.removeAttribute("imgUser");
 			return "redirect:/index";
 		}
-		
+
 		return "redirect:/index";
 	}
 
-	
 }

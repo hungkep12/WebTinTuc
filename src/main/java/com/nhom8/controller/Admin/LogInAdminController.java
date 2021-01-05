@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,7 +60,7 @@ public class LogInAdminController {
 		Integer id = adminRepository.selectIdByUserName(userEmail);
 		List<Admin> adminEntity = adminRepository.findAll();
 		for (Admin tk : adminEntity) {
-			if (admin.getEmail().equals(tk.getEmail()) && admin.getPass().equals(tk.getPass())) {
+			if (admin.getEmail().equals(tk.getEmail())){
 				
 				adminRepository.updateSttForId(true, id);
 				
@@ -79,7 +80,6 @@ public class LogInAdminController {
 				session.setAttribute("image", images);
 				System.out.println("=======================Đăng nhập thành công============================");
 				return "redirect:/admin";
-				
 			}
 		}
 		return "admin/loginAdmin";

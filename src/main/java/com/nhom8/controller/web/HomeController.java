@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,6 +21,7 @@ import com.nhom8.Service.CategoriesService;
 import com.nhom8.Service.PostService;
 import com.nhom8.Service.UserService;
 import com.nhom8.entities.Categories;
+import com.nhom8.entities.Post;
 import com.nhom8.repositories.CategoriesRepository;
 import com.nhom8.repositories.CommentRepository;
 import com.nhom8.repositories.ContactRepository;
@@ -62,18 +65,13 @@ public class HomeController {
 		System.out.println("================================= Index ================================================");
 
 		model.addAttribute("post", postService.findAll(true,6,0));
+		//Page<Post> page = postService.findAllByView(PageRequest.of(0,5));
 		model.addAttribute("mostPost", postService.findAllByView());
 
 		model.addAttribute("categories", categoriesService.findByStatus(true));
-		Date dNow = new Date();
-		SimpleDateFormat ft = new SimpleDateFormat("mm");
-
-		System.out.println("Date hien tai: " + ft.format(dNow));
-		// model.addAttribute("postRandom", postRepository.findPostRandom());
-		// các bài đăng lấy bằng random
 
 		return "web/index";
 	}
-
+	
 	
 }

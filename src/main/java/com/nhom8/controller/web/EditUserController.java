@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -16,13 +17,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.nhom8.Service.CategoriesService;
 import com.nhom8.Service.UserService;
-import com.nhom8.controller.Admin.CheckLogIn;
-import com.nhom8.entities.Post;
 import com.nhom8.entities.User;
 import com.nhom8.repositories.UserRepository;
 
@@ -35,7 +33,7 @@ public class EditUserController {
 	UserService userService;
 	@Autowired
 	UserRepository userRepository;
-
+	
 	@Value("${file.upload.path}")
 	private String attachmentPath;
 
@@ -60,24 +58,21 @@ public class EditUserController {
 		}
 		HttpSession session = request.getSession();
 		if (postImage != null && postImage.getSize() > 0) {
-			/*
-			 * PostAttachment postAttachment = new PostAttachment();
-			 * postAttachment.setName(postImage.getOriginalFilename());
-			 * postAttachment.setMine(postImage.getContentType());
-			 * postAttachment.setPath(attachmentPath);
-			 * 
-			 * post.addPostAttachment(postAttachment);
-			 */
+			
 			user.setImage(postImage.getOriginalFilename());
 
 			// lưu file vào folder trên server.
 			// E:/web-tintuc/Nhom13-web/src/main/resources/META-INF/img/upload/abc.jpeg
 
 			postImage.transferTo(new File(attachmentPath + "/" + postImage.getOriginalFilename()));
+		}else {
+			user.setImage("avatar.png");
 		}
 		user.setStt(true);
-		// userService.updateUser(user.getUserName(), user.getEmail(), user.getPass(),
-		// true, user.getImage(), user.getId());
+		String password = user.getPass();
+		String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+		user.setPass(hash);
+		
 		userRepository.save(user);
 
 		session.setAttribute("name", user.getUserName());

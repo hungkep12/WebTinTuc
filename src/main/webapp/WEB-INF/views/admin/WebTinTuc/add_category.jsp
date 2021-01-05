@@ -96,6 +96,16 @@
 											class="form-control"></form:textarea>
 									</div>
 								</div>
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Trạng thái:</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<form:select path="status" class="form-control"
+											id="input-select" >
+											<form:option value="true">Hiển thị</form:option>
+											<form:option value="false">Không hiển thị</form:option>
+										</form:select>
+									</div>
+								</div>
 								<div class="form-group row text-right">
 									<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
 										<button type="submit" class="btn btn-space btn-primary">Lưu</button>

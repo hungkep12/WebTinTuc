@@ -60,7 +60,7 @@
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
 						<h2 class="pageheader-title">Danh sách tài khoản admin</h2>
-						
+
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
@@ -68,7 +68,8 @@
 										class="breadcrumb-link">Nhóm 8</a></li>
 									<li class="breadcrumb-item"><a href="#"
 										class="breadcrumb-link">Quản trị viên</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Danh sách tài khoản admin</li>
+									<li class="breadcrumb-item active" aria-current="page">Danh
+										sách tài khoản admin</li>
 								</ol>
 							</nav>
 						</div>
@@ -90,7 +91,7 @@
 					<div class="card">
 						<div class="card-header">
 							<h5 class="mb-0">List Admin</h5>
-							
+
 						</div>
 
 						<div class="card-body">
@@ -137,7 +138,8 @@
 														<a href="/admin/edit_admin/${admin.id }"><button
 																class="btn btn-sm btn-outline-light">Edit</button></a> <a
 															href="/admin/data-tables-admin-list/${admin.id }"><button
-																class="btn btn-sm btn-outline-light">
+																class="btn btn-sm btn-outline-light"
+																onclick="return window.confirm('Bạn có chắc chắn muốn xoá tài khoản này không?');">
 																<i class="far fa-trash-alt"></i>
 															</button></a>
 													</div>

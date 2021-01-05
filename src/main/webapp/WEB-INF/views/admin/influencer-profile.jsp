@@ -149,7 +149,7 @@
 												<label class="col-12 col-sm-3 col-form-label text-sm-right">Chức
 													vụ</label>
 												<div class="col-12 col-sm-8 col-lg-6">
-													<c:if test="${admin.position == 'admin'}">
+													<c:if test="${admin.position == 'Admin'}">
 														<select class="form-control" id="input-select"
 															name="position" disabled>
 															<option value="admin" selected>Admin</option>

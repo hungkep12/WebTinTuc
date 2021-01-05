@@ -103,41 +103,11 @@
 									<label class="col-12 col-sm-3 col-form-label text-sm-right">Nội
 										dung</label>
 									<div class="col-12 col-sm-8 col-lg-6">
-										<form:textarea path="details" required="" class="form-control"
+										<form:textarea path="details" required="" class="form-control ckeditor"
 											rows="20"></form:textarea>
 									</div>
 								</div>
-								<!-- 
-								<div class="form-group row">
-									<label class="col-sm-3 col-form-label text-sm-right"></label>
-									<div class="col-sm-6">
-										<div class="custom-controls-stacked">
-											<label class="custom-control custom-checkbox"> <input
-												id="ck1" name="ck1" type="checkbox"
-												data-parsley-multiple="groups" value="bar"
-												data-parsley-mincheck="2"
-												data-parsley-errors-container="#error-container1"
-												class="custom-control-input"><span
-												class="custom-control-label">Nhiều người quan tâm</span>
-											</label> <label class="custom-control custom-checkbox"> <input
-												id="ck2" name="ck2" type="checkbox"
-												data-parsley-multiple="groups" value="bar2"
-												data-parsley-mincheck="2"
-												data-parsley-errors-container="#error-container1"
-												class="custom-control-input"><span
-												class="custom-control-label">Mới</span>
-											</label> <label class="custom-control custom-checkbox"> <input
-												id="ck3" name="ck3" type="checkbox"
-												data-parsley-multiple="groups" value="bar3"
-												data-parsley-mincheck="2" required=""
-												data-parsley-errors-container="#error-container1"
-												class="custom-control-input"><span
-												class="custom-control-label">Nổi bật</span>
-											</label>
-											<div id="error-container1"></div>
-										</div>
-									</div>
-								</div> -->
+								
 								<%
 									if (session.getAttribute("name") != null) {
 								%>
@@ -243,6 +213,8 @@
 		src="${pageContext.request.contextPath}/assets/vendor/parsley/parsley.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/libs/js/main-js.js"></script>
+		<script
+		src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script>
 	<script>
 		$('#form').parsley();
 	</script>

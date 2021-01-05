@@ -88,7 +88,6 @@ public class ListCategoryController {
 	public String addCategory(@ModelAttribute("category") Categories category, BindingResult result,
 			final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws IllegalStateException, IOException {
-
 		
 		categoriesRepository.save(category);
 

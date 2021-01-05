@@ -51,7 +51,6 @@ public class UserService {
 		if(query.getResultList().size() > 0) {
 			return false;
 		}
-		
 		else {
 			entityManager.createNativeQuery("Insert into tbl_user(email,image,pass,status,username) VALUES(?,?,?,?,?)")
 			.setParameter(1, user.getEmail()).setParameter(2, user.getImage()).setParameter(3, user.getPass())

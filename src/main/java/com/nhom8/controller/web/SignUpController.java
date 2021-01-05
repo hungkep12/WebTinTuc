@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,7 @@ public class SignUpController {
 	UserRepository userRepository;
 	@Autowired
 	UserService userService;
-
+	
 	@RequestMapping(value = { "/sign_up" }, method = { RequestMethod.GET })
 	public String DangNhap(Model model, final HttpServletRequest request, final HttpServletResponse response) 
 	{
@@ -38,6 +39,11 @@ public class SignUpController {
 					throws IllegalStateException, IOException{
 		user.setStt(false);
 		user.setImage("avatar.png");
+		
+		String password = user.getPass();
+		String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+		user.setPass(hash);
+
 		if(!userService.Insert(user)) {
 			result.addError(new FieldError("user", "email", "Email đã tồn tại!"));
 			return "web/sign-up";

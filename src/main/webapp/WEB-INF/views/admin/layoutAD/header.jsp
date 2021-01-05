@@ -33,69 +33,40 @@
 						<ul
 							class="dropdown-menu dropdown-menu-right notification-dropdown">
 							<li>
-								<div class="notification-title">Notification</div>
+								<div class="notification-title">Thông báo</div>
 								<div class="notification-list">
 									<div class="list-group">
-										<a href="#"
-											class="list-group-item list-group-item-action active">
-											<div class="notification-info">
-												<div class="notification-list-user-img">
-													<img
-														src="${pageContext.request.contextPath}/assets/images/avatar-2.jpg"
-														alt="" class="user-avatar-md rounded-circle">
-												</div>
-												<div class="notification-list-user-block">
-													<span class="notification-list-user-name">Jeremy
-														Rakestraw</span>accepted your invitation to join the team.
-													<div class="notification-date">2 min ago</div>
-												</div>
-											</div>
-										</a> <a href="#" class="list-group-item list-group-item-action">
-											<div class="notification-info">
-												<div class="notification-list-user-img">
-													<img
-														src="${pageContext.request.contextPath}/sassets/images/avatar-3.jpg"
-														alt="" class="user-avatar-md rounded-circle">
-												</div>
-												<div class="notification-list-user-block">
-													<span class="notification-list-user-name">John
-														Abraham </span>is now following you
-													<div class="notification-date">2 days ago</div>
-												</div>
-											</div>
-										</a> <a href="#" class="list-group-item list-group-item-action">
-											<div class="notification-info">
-												<div class="notification-list-user-img">
-													<img
-														src="${pageContext.request.contextPath}/assets/images/avatar-4.jpg"
-														alt="" class="user-avatar-md rounded-circle">
-												</div>
-												<div class="notification-list-user-block">
-													<span class="notification-list-user-name">Monaan
-														Pechi</span> is watching your main repository
-													<div class="notification-date">2 min ago</div>
-												</div>
-											</div>
-										</a> <a href="#" class="list-group-item list-group-item-action">
-											<div class="notification-info">
-												<div class="notification-list-user-img">
-													<img
-														src="${pageContext.request.contextPath}/assets/images/avatar-5.jpg"
-														alt="" class="user-avatar-md rounded-circle">
-												</div>
-												<div class="notification-list-user-block">
-													<span class="notification-list-user-name">Jessica
-														Caruso</span>accepted your invitation to join the team.
-													<div class="notification-date">2 min ago</div>
-												</div>
-											</div>
-										</a>
+										<c:if test="${kiemtra == true}">
+											<c:forEach var="contactFalse" items="${contactFalse}">
+												<a href="/admin/list-contact"
+													class="list-group-item list-group-item-action active">
+													<div class="notification-info">
+														<div class="notification-list-user-img">
+															<img
+																src="${pageContext.request.contextPath}/assets/images/contact.jpg"
+																alt="" class="user-avatar-md ">
+														</div>
+														<div class="notification-list-user-block">
+															<span class="notification-list-user-name">${contactFalse.fullName}</span>Đã
+															gửi một liên hệ.
+															<div class="" style="font-size: 12px; opacity: 0.5">${contactFalse.email}</div>
+															<div class="notification-date">${contactFalse.createdDate}</div>
+														</div>
+													</div>
+												</a>
+											</c:forEach>
+										</c:if>
+
+										<c:if test="${kiemtra == false}">
+											<p style="text-align: center; padding-top: 1rem">Không có
+												thông báo nào</p>
+										</c:if>
 									</div>
 								</div>
 							</li>
 							<li>
 								<div class="list-footer">
-									<a href="#">View all notifications</a>
+									<a href="/admin/list-contact">Xem chi tiết</a>
 								</div>
 							</li>
 						</ul></li>
@@ -173,9 +144,8 @@
 
 									<%}%>
 							"><i
-								class="fas fa-user mr-2"></i>Account</a>  <a
-								class="dropdown-item" href="/admin/logout"><i
-								class="fas fa-power-off mr-2"></i>Logout</a>
+								class="fas fa-user mr-2"></i>Account</a> <a class="dropdown-item"
+								href="/admin/logout"><i class="fas fa-power-off mr-2"></i>Logout</a>
 						</div></li>
 				</ul>
 			</div>
@@ -199,10 +169,9 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav flex-column">
 						<li class="nav-divider">Quản Lý</li>
-						 <%
-						
+						<%
 							if ("admin".equalsIgnoreCase(session.getAttribute("chucvu").toString())) {
-						%> 
+						%>
 						<li class="nav-item "><a class="nav-link " href="#"
 							data-toggle="collapse" aria-expanded="false"
 							data-target="#submenu-1" aria-controls="submenu-1"><i
@@ -239,7 +208,7 @@
 
 						<%
 							}
-						%> 
+						%>
 
 
 						<li class="nav-item"><a class="nav-link" href="#"

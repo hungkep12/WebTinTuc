@@ -74,7 +74,9 @@ public class CommentController {
 	@RequestMapping(value = { "/blog-post/addComment/{id}-{title}" }, method = { RequestMethod.POST })
 	public String saveComment( @PathVariable int id,@PathVariable String title, @ModelAttribute("comments") Comment comment, final ModelMap model,
 			final HttpServletRequest request, final HttpServletResponse response) {
-
+		if (CheckLoginUser.Check(request) == false) {
+			return "redirect:/blog-post/{id}-{title}";
+		}
 		// lưu dữ liệu vào database.
 		HttpSession session = request.getSession();
 		if(session.getAttribute("emailUser") != null) {
